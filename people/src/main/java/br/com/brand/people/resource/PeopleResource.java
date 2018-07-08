@@ -27,12 +27,18 @@ public class PeopleResource {
 	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
 		    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-	@RequestMapping(value = "/people", method = RequestMethod.GET)
+	@RequestMapping(value = "/people")
 	public ResponseEntity<List<People>> listPeople() {
 		return new ResponseEntity<List<People>>(new ArrayList<People>(peopleService.listPeople()), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/people", method = RequestMethod.DELETE)
+	public ResponseEntity<List<People>> deleteAllPeople() {
+		peopleService.deleteAll();
+		return new ResponseEntity(HttpStatus.OK);
+	}
   
-	@RequestMapping(value = "/people/{user}", method = RequestMethod.GET)
+	@RequestMapping(value = "/people/{user}")
 	public ResponseEntity<?> findPeopleByUser(@PathVariable("user") String user) {
 		People people = null;
 		
