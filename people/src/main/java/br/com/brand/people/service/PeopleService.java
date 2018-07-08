@@ -34,10 +34,15 @@ public class PeopleService {
 	}
 	
 	public void deletePeopleByUser(String user) {
-		peopleRepository.delete(user);
+		People people = peopleRepository.findOne(user);
+		peopleRepository.delete(people);
 	}
 
 	public boolean isExistingPeople(String user) {
 		return peopleRepository.exists(user);
+	}
+	
+	public void deleteAll() {
+		peopleRepository.deleteAll();
 	}
 }

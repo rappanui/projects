@@ -1,4 +1,4 @@
-package rest_test.rest_test;
+package br.com.brand;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
