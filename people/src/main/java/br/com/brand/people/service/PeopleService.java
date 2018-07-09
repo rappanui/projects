@@ -4,13 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import br.com.brand.people.model.People;
 import br.com.brand.people.repository.PeopleRepository;
 
+/**
+ * Contains the methods to Create, Read, Update and Delete people data 
+ * @author Raphael Pereira da Silva
+ */
 @Service
 public class PeopleService {
+
+	@Autowired
+	JdbcTemplate jdbcTemplate;
 	
 	@Autowired
 	PeopleRepository peopleRepository;
@@ -21,25 +29,24 @@ public class PeopleService {
 		return people;
 	}
 	
-	public People findPeopleByUser(String user) {
-		return peopleRepository.findOne(user);
+	public People findPeopleByUsername(String username) {
+		return peopleRepository.findOne(username);
 	}
 
 	public void insertPeople(People people) {
 		peopleRepository.save(people);
 	}
 	
-	public void updateExistingPeopleData(String user, People people) {
+	public void updateExistingPeopleData(String username, People people) {
 		peopleRepository.save(people);
 	}
 	
-	public void deletePeopleByUser(String user) {
-		People people = peopleRepository.findOne(user);
-		peopleRepository.delete(people);
+	public void deletePeopleByUsername(String username) {
+		peopleRepository.delete(username);
 	}
 
-	public boolean isExistingPeople(String user) {
-		return peopleRepository.exists(user);
+	public boolean isExistingPeople(String username) {
+		return peopleRepository.exists(username);
 	}
 	
 	public void deleteAll() {

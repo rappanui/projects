@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class People {
 
 	@Id
-	private String user;
+	private String username;
 	private String name;
 	private String email;
 	private Long phoneNumber;
@@ -15,21 +15,21 @@ public class People {
 	
 	public People() {}
 	   
-	public People(String user, String name, String email, Long phoneNumber, Long whatsappNumber) {
+	public People(String username, String name, String email, Long phoneNumber, Long whatsappNumber) {
 		super();
-		this.user= user;
+		this.username= username;
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.whatsappNumber = whatsappNumber;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getName() {
@@ -67,7 +67,7 @@ public class People {
 	 
 	@Override
 	public String toString() {
-		return "People [user=" + getUser() + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
+		return "People [username=" + getUsername() + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
 				+ ", whatsappNumber=" + whatsappNumber + "]";
 	}
 	
