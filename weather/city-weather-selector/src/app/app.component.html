@@ -1,0 +1,73 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Weather Selector</h1>
+    </div>
+</div>
+<div style="background-color:cyan; margin-top:-20px; padding-top:-15px; padding-bottom:-15px" class="jumbotron">
+    <div class="container">
+        <div class="input-group">
+            <label class="mx-auto" for="inputdefault">
+                <h3><small>Select the city:</small></h3>
+            </label>
+            <input id="inputdefault" style="margin-right:10px; margin-left:10px" class="form-control" (keyup)="onNameKeyUp($event)">
+            <button (click)="getWeather()" type="button" class="btn btn-primary btn-md">Get Weather</button>
+        </div>
+</div>
+</div>
+<div *ngIf="found == true; then weather"></div>
+<div *ngIf="found == false; then noweather"></div>
+
+<ng-template #weather>
+<div style="margin-top:40px; padding-left:40px" class="container">
+    <h1 class=display-4><p class="text-uppercase" >{{city}} - {{country}}</p></h1>
+    <h6 class="display-7">Lon: {{coordLon}} - Lat: {{coordLat}}</h6>
+    <table class="table table-responsive table-striped table-hover table-sm">
+        <tr>
+            <th>
+                <img style="width: 100px; height: 100px" src={{weatherIcon}}>
+            </th>
+            <th>
+                <h3 class=display-4>{{mainTemp}} ºC</h3>
+                <h6 class="display-7">Min: {{mainTempMin}}ºC - Max: {{mainTempMax}}ºC</h6>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h5 class="display-6"><p class="text-capitalize"><strong>{{weatherMain}}</strong> - </p></h5>
+            </th>
+            <th>
+                <h5 class="display-6"><p class="text-capitalize">{{weatherDescription}}</p></h5>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h5 class="text-capitalize"><small>Pressure: {{mainPressure}} hPa</small></h5>
+            </th>
+            <th>
+                <h5 class="text-capitalize"><small>Humidity: {{mainHumidity}}%</small></h5>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h5 class="text-capitalize"><small>Sunrise time: {{ sunrise * 1000 | date:'shortTime' }} </small></h5>
+            </th>
+            <th>
+                <h5 class="text-capitalize"><small>Sunset time: {{ sunset * 1000 | date:'shortTime' }}</small></h5>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h5 class="text-capitalize"><small>Wind speed: {{ windSpeed }} m/s</small></h5>
+            </th>
+            <th>
+                <h5 class="text-capitalize"><small>Wind direction: {{ windDeg }}</small></h5>
+            </th>
+        </tr>
+    </table>
+</div>
+</ng-template>
+<ng-template #noweather>
+    <div style="margin-top:40px; padding-left:40px" class="container">
+        <h3 class=display-6><small>Please insert a valid city name</small></h3>
+    </div>
+</ng-template>
