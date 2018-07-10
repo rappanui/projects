@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: people
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: newra
+Built-By: RaphaNui
 Implementation-Vendor-Id: br.com.brand
 Build-Jdk: 1.8.0_171
 Created-By: Maven Integration for Eclipse
